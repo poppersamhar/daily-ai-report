@@ -211,28 +211,27 @@
       </div>
       
       <div class="card-body">
-        <h2 class="card-title">⚡ 微软 Maia 200 AI 芯片：云巨头算力军备竞赛的“核武器”</h2>
+        <h2 class="card-title">微软发布Maia 200 AI芯片：云巨头自研芯片军备竞赛进入白热化 🔥</h2>
         
         <div class="insight-box">
           <div class="insight-title">INSIGHT · 深度认知</div>
-          <div class="insight-text">微软发布 Maia 200 AI 芯片，本质是云服务商为摆脱对英伟达的“算力依赖”和“成本暴政”，通过自研专用硬件，在 AI 推理这个“烧钱黑洞”上实现性能、效率和成本控制的终极内卷。</div>
+          <div class="insight-text">微软推出自研的Maia 200 AI加速器芯片，本质上是云服务商为了在AI时代彻底掌控自己的命运——从依赖英伟达等外部供应商的“算力租客”，转变为拥有底层硬件定义权的“算力房东”，从而在成本、性能、系统集成和供应链安全上获得绝对主动权。</div>
         </div>
 
         <div class="section-header">
           <span class="section-icon">🛠️</span> 核心原理
         </div>
         <div class="content-text">
-          采用台积电 3nm 制程工艺，集成超过 1000 亿个晶体管，专为大规模 AI 工作负载（尤其是大型语言模型的推理任务）设计。通过芯片级架构优化（如对 FP4/FP8 低精度计算的支持），在单位成本和能效上超越通用 GPU 和竞争对手的专用 AI 芯片（如亚马逊 Trainium、谷歌 TPU）。
+          采用台积电3纳米先进制程工艺，集成超过1000亿个晶体管，专为大规模AI工作负载（尤其是大语言模型的推理任务）设计。通过定制化的芯片架构、指令集和软件栈（包括SDK），实现与自家云基础设施（如Azure）和上层AI服务（如OpenAI GPT-5.2、Microsoft 365 Copilot）的深度垂直整合。
         </div>
 
         <div class="section-header">
           <span class="section-icon">📊</span> 关键数据
         </div>
         <div class="content-text">
-          1. **性能宣称**：FP4 性能是亚马逊第三代 Trainium 的 3 倍，FP8 性能超过谷歌第七代 TPU。
-2. **效率提升**：相比微软现有最新一代硬件，推理性能每美元提升 30%，是其部署过的最高效推理系统。
-3. **应用部署**：将用于托管 OpenAI 的 GPT-5.2 模型，并服务于 Microsoft Foundry 和 Microsoft 365 Copilot。
-4. **生态开放**：向学术界、开发者、AI 实验室和开源项目贡献者提供 Maia 200 软件开发套件的早期预览。
+          1. **性能宣称**：FP4性能达到亚马逊第三代Trainium芯片的3倍，FP8性能超过谷歌第七代TPU。
+2. **能效提升**：相比微软现有最新一代硬件，实现了30%的“每美元性能”提升，成为其部署过的最高效推理系统。
+3. **部署应用**：已开始在其数据中心部署，将用于托管OpenAI的GPT-5.2等大型模型，服务于Microsoft Foundry和Microsoft 365 Copilot。微软超级智能团队将首批使用。
         </div>
 
         <a href="https://www.theverge.com/news/867670/microsoft-maia-200-ai-chip-announcement" target="_blank" class="btn-link">
@@ -248,25 +247,25 @@
       </div>
       
       <div class="card-body">
-        <h2 class="card-title">英伟达AI气象模型：用“暴力”Transformer提前数周看穿风暴🌪️</h2>
+        <h2 class="card-title">英伟达AI气象模型：用“暴力”Transformer提前数周预知风暴🌪️</h2>
         
         <div class="insight-box">
           <div class="insight-title">INSIGHT · 深度认知</div>
-          <div class="insight-text">这项技术的本质，是把天气预报从一个依赖超级计算机求解复杂物理方程的“模拟仿真”问题，变成了一个让AI从海量历史数据中直接“猜”出未来天气模式的“模式识别”问题。它解决的痛点是：传统数值天气预报计算成本极高、速度慢，只有少数富裕国家和巨头玩得起，而AI模型能在几分钟内用GPU完成过去需要超级计算机数小时的数据同化工作，把高精度、长时效的预报能力“民主化”，让更多国家和地区能自主、快速地进行关乎国家安全和经济的天气决策。</div>
+          <div class="insight-text">这项技术本质上是用海量数据和暴力计算，绕过了传统物理模拟的复杂方程求解，直接从历史天气数据中“学习”大气运动的统计规律，从而实现了又快又准的长期预报。它把天气预报从一个依赖超级计算机求解微分方程的“物理模拟问题”，变成了一个在GPU上跑Transformer的“模式识别问题”。</div>
         </div>
 
         <div class="section-header">
           <span class="section-icon">🛠️</span> 核心原理
         </div>
         <div class="content-text">
-          基于全新的Atlas架构（具体细节待公布），其核心是采用“简单、可扩展的Transformer架构”。具体包含三个新模型：1) **Earth-2 Medium Range**：基于Atlas架构的中期预报模型，在超过70个变量上超越Google的GenCast；2) **Nowcasting**：利用全球静止卫星观测数据直接训练，进行0-6小时短临预报，具有全球普适性；3) **Global Data Assimilation**：利用气象站、气球等多源观测数据，在GPU上快速生成全球数千个位置的天气状况“快照”，作为所有预报模型的初始场，将传统上消耗50%超算负载的数据同化过程从数小时缩短至数分钟。
+          基于名为“Atlas”的新型Transformer架构构建的AI模型套件（Earth-2）。核心包括：1) **Medium Range模型**：用于中长期（15天）预报，基于纯数据驱动的Transformer，替代传统数值天气预报（NWP）的物理方程求解。2) **Nowcasting模型**：专注于0-6小时短临预报，直接输入全球静止卫星观测数据，实现快速、普适的灾害天气预警。3) **Global Data Assimilation模型**：用AI加速数据同化过程，将来自气象站、气球等的观测数据快速融合成模型可用的初始场，将原本需超级计算机数小时的工作缩短至GPU上的几分钟。
         </div>
 
         <div class="section-header">
           <span class="section-icon">📊</span> 关键数据
         </div>
         <div class="content-text">
-          1. **预报精度**：Earth-2 Medium Range模型在超过70个气象变量上击败了此前领先的Google DeepMind GenCast模型。2. **计算效率**：Global Data Assimilation模型将数据同化时间从超算的“数小时”缩短至GPU上的“数分钟”。3. **部署应用**：已有实际部署案例，如以色列和台湾的气象部门已在试用Earth-2 CorrDiff模型；The Weather Company和Total Energies正在评估Nowcasting模型。4. **可及性**：旨在打破高精度天气预报被富裕国家和大型企业垄断的局面，为更多国家气象服务、金融公司和能源企业提供基础构建模块。
+          1. **精度超越**：Earth-2 Medium Range模型在超过70个气象变量上，击败了谷歌DeepMind于2024年12月发布的先进AI气象模型GenCast。2. **速度革命**：Global Data Assimilation模型将传统上消耗约50%超级计算负荷的数据同化过程，从数小时缩短至GPU上的几分钟。3. **可及性提升**：整套工具旨在降低高性能气象预报的门槛，使中小国家、地方政府及企业（如能源、金融公司）能够构建和运行自己的精细化预报模型，打破了对昂贵超级计算机的依赖。4. **实际部署**：以色列和台湾的气象部门已在使用Earth-2 CorrDiff模型；The Weather Company和Total Energies正在评估Nowcasting模型。
         </div>
 
         <a href="https://techcrunch.com/2026/01/26/nvidias-new-ai-weather-models-probably-saw-this-storm-coming-weeks-ago/" target="_blank" class="btn-link">
@@ -278,35 +277,34 @@
     <div class="card">
       <div class="card-img-wrapper">
         <span class="card-tag">TOP 3</span>
-        <img src="https://techcrunch.com/wp-content/uploads/2024/05/GettyImages-1468360413.jpg?w=1024" class="card-img" alt="核心架构图">
+        <img src="https://techcrunch.com/wp-content/uploads/2026/01/microsoft-word-verifai-tool_68493a.jpg" class="card-img" alt="核心架构图">
       </div>
       
       <div class="card-body">
-        <h2 class="card-title">英伟达20亿美元输血CoreWeave：一场关于AI算力“军备竞赛”的深度捆绑 🚀</h2>
+        <h2 class="card-title">🔐 高通押注SpotDraft：将合同AI从云端搬到设备端，估值翻倍逼近4亿美元</h2>
         
         <div class="insight-box">
           <div class="insight-title">INSIGHT · 深度认知</div>
-          <div class="insight-text">这本质上是一场由AI算力供需严重失衡引发的“军火商”与“军阀”的深度结盟。英伟达作为顶级AI芯片“军火商”，通过战略投资和深度技术绑定，直接下场扶持其最大的“军阀”客户CoreWeave，以最快速度将自家的芯片、存储、CPU乃至软件栈，打包成即插即用的“AI工厂”解决方案，从而在激烈的市场竞争中，牢牢锁定未来的算力出货通道和生态主导权。</div>
+          <div class="insight-text">这本质上是在解决一个‘信任悖论’：企业既想用AI处理敏感合同，又不敢把合同数据送上云端。SpotDraft的解法是把AI模型直接塞进你的笔记本电脑里，让合同在本地被分析、修改、评分，数据不出设备，隐私和合规风险瞬间归零。</div>
         </div>
 
         <div class="section-header">
           <span class="section-icon">🛠️</span> 核心原理
         </div>
         <div class="content-text">
-          垂直整合战略投资与生态锁定。英伟达不仅提供资金（20亿美元购买CoreWeave股份），更提供从芯片（下一代Rubin架构）、存储（Bluefield）、CPU（Vera）到软件和参考架构的全栈技术，并协助获取数据中心所需的土地和电力资源。这种“资本+技术+资源”三位一体的深度捆绑，旨在将CoreWeave的云平台彻底改造为英伟达技术的“样板间”和“直销渠道”，加速其“AI工厂”（数据中心）的全球部署（目标2030年前增加5GW容量），从而巩固自身在AI硬件生态中的绝对领导地位。
+          **端侧AI推理与微调模型部署**。SpotDraft的核心技术路径是将其专有的合同分析AI模型（VerifAI）直接部署并运行在用户终端设备（如搭载高通Snapdragon X Elite芯片的笔记本电脑）上，实现完全离线的合同审阅、风险评分和红线修订。该方法依赖于：1) **模型轻量化与优化**：对前沿大模型进行微调和压缩，使其能在终端芯片上高效运行，据称性能差距与云端模型仅5%；2) **本地化工作流集成**：将AI能力深度嵌入Microsoft Word等现有办公环境，直接调用本地策略和模板库（Playbooks）进行比对分析；3) **混合架构**：仅将登录、授权等非敏感操作交由云端，核心数据处理全程在设备端完成。
         </div>
 
         <div class="section-header">
           <span class="section-icon">📊</span> 关键数据
         </div>
         <div class="content-text">
-          1. 资本层面：交易宣布后，CoreWeave股价应声上涨超过15%，市场将其解读为对CoreWeave高负债（截至2025年9月达188.1亿美元）商业模式和行业地位的强力背书。
-2. 产能规划：双方合作目标明确，即在2030年前为CoreWeave新增超过5吉瓦（GW）的AI计算容量，这相当于数个超大规模数据中心的电力需求。
-3. 生态整合：CoreWeave承诺在其全平台深度集成英伟达的最新产品线，包括尚未上市的Rubin芯片架构，使英伟达得以通过核心客户快速验证和推广其最新技术。
-4. 市场格局：此举进一步强化了AI云服务市场的“军备竞赛”态势，英伟达通过扶持CoreWeave这类“纯GPU云”供应商，制衡传统公有云巨头（如AWS、Azure、GCP），并确保自身芯片在推理和训练市场的持续高需求。
+          1. **商业验证**：客户数从去年约400家增至超700家，年处理合同量超100万份，合同量年同比增长173%，月活用户近5万，预计2026年收入将实现100%同比增长。
+2. **技术验证**：已在Snapdragon Summit 2025上公开展示端到端离线工作流（VerifAI），在搭载骁龙X Elite的笔记本上实现合同全本地处理。其端侧模型在评估中与云端前沿模型性能差距仅约5%，且响应速度可达云端的三分之一。
+3. **生态与资本验证**：获得高通风投800万美元战略投资，估值从1.9亿美元翻倍至约3.8亿美元，并与高通达成联合开发与市场推广合作。总融资额达9200万美元。
         </div>
 
-        <a href="https://techcrunch.com/2026/01/26/nvidia-invests-2b-to-help-debt-ridden-coreweave-add-5gw-of-ai-compute/" target="_blank" class="btn-link">
+        <a href="https://techcrunch.com/2026/01/26/qualcomm-backs-spotdraft-to-scale-on-device-contract-ai-with-valuation-doubling-toward-400m/" target="_blank" class="btn-link">
           阅读原文 🔗
         </a>
       </div>

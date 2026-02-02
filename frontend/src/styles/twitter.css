@@ -1,0 +1,135 @@
+/* ========================================
+   Twitter Page - Modern Minimal
+   ======================================== */
+
+.twitter-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--space-lg);
+}
+
+.masonry-container {
+  column-count: 3;
+  column-gap: var(--space-md);
+}
+
+.item {
+  break-inside: avoid;
+  margin-bottom: var(--space-md);
+  display: inline-block;
+  width: 100%;
+}
+
+.tweet-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  position: relative;
+  transition: all var(--transition-base);
+}
+
+.tweet-card:hover {
+  border-color: var(--accent-muted);
+  box-shadow: var(--shadow-md);
+}
+
+.tweet-detail-btn {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-sm);
+  z-index: 10;
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  opacity: 0;
+}
+
+.tweet-card:hover .tweet-detail-btn {
+  opacity: 1;
+}
+
+.tweet-detail-btn:hover {
+  background: var(--accent-light);
+}
+
+.tweet-summary {
+  padding: var(--space-md);
+  background: var(--bg-tertiary);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.tweet-summary .summary-label {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: var(--space-xs);
+}
+
+.tweet-summary p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text-primary);
+}
+
+.tweet-translation {
+  padding: var(--space-md);
+  background: var(--bg-primary);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.tweet-translation .translation-label {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: var(--space-xs);
+}
+
+.tweet-translation p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.twitter-embed {
+  padding: var(--space-md);
+}
+
+.twitter-tweet {
+  margin: 0 !important;
+}
+
+@media (max-width: 1000px) {
+  .masonry-container {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 640px) {
+  .masonry-container {
+    column-count: 1;
+  }
+
+  .tweet-detail-btn {
+    opacity: 1;
+  }
+}
+
+/* 详情页打开时，保持3列但压缩到2/3宽度 */
+.app.detail-open .masonry-container {
+  column-count: 3;
+}

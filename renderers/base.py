@@ -1,11 +1,9 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
+from datetime import datetime
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>每日 AI 视频精选</title>
-  <style>
+
+def get_base_styles() -> str:
+    """获取基础 CSS 样式"""
+    return '''
     * {
       margin: 0;
       padding: 0;
@@ -20,6 +18,54 @@
       -webkit-font-smoothing: antialiased;
     }
 
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* 导航栏 */
+    .navbar {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-inner {
+      max-width: 100%;
+      margin: 0;
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-brand {
+      font-size: 18px;
+      font-weight: 600;
+      color: #1d1d1f;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .nav-link {
+      font-size: 14px;
+      color: #6e6e73;
+      transition: color 0.2s;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: #007aff;
+    }
+
+    /* 头部 */
     .header {
       background: linear-gradient(180deg, #e8f4fc 0%, #f5f5f7 100%);
       padding: 60px 20px 40px;
@@ -55,7 +101,7 @@
     }
 
     .container {
-      max-width: 680px;
+      max-width: 900px;
       margin: 0 auto;
       padding: 0 20px 60px;
     }
@@ -74,6 +120,7 @@
       overflow: hidden;
       box-shadow: 0 4px 24px rgba(0, 122, 255, 0.08);
       border: 1px solid rgba(0, 122, 255, 0.1);
+      margin-bottom: 24px;
     }
 
     .hero-thumb {
@@ -138,6 +185,7 @@
       margin-bottom: 16px;
     }
 
+    /* 标签 */
     .tags {
       display: flex;
       flex-wrap: wrap;
@@ -161,6 +209,21 @@
     .tag.person {
       background: #fef6e8;
       color: #bf5a00;
+    }
+
+    .tag.topic, .tag.tech {
+      background: #f0e8fc;
+      color: #5856d6;
+    }
+
+    .tag.event {
+      background: #e8fcf0;
+      color: #00a86b;
+    }
+
+    .tag.lang {
+      background: #fce8e8;
+      color: #d63031;
     }
 
     /* 展开按钮 */
@@ -275,7 +338,7 @@
       background: #0066d6;
     }
 
-    /* 普通视频卡片 */
+    /* 普通卡片 */
     .video-card {
       display: flex;
       background: white;
@@ -298,7 +361,7 @@
       width: 160px;
       min-width: 160px;
       height: 100px;
-      background: #000;
+      background: #f0f0f0;
     }
 
     .card-thumb img {
@@ -352,6 +415,128 @@
       padding: 3px 8px;
     }
 
+    /* 紧凑卡片 */
+    .compact-card {
+      display: block;
+      background: white;
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .compact-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+    }
+
+    .compact-info h3 {
+      font-size: 15px;
+      font-weight: 600;
+      line-height: 1.4;
+      margin-bottom: 8px;
+    }
+
+    .compact-summary {
+      font-size: 14px;
+      color: #6e6e73;
+      line-height: 1.5;
+      margin-bottom: 8px;
+    }
+
+    /* 模块预览 */
+    .modules-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin-top: 30px;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .module-preview {
+      background: white;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+    }
+
+    .module-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .module-icon {
+      font-size: 20px;
+      margin-right: 8px;
+    }
+
+    .module-name {
+      font-size: 16px;
+      font-weight: 600;
+      flex: 1;
+    }
+
+    .module-more {
+      font-size: 13px;
+      color: #007aff;
+    }
+
+    .preview-hero h3 {
+      font-size: 15px;
+      font-weight: 600;
+      line-height: 1.4;
+      margin-bottom: 8px;
+      color: #1d1d1f;
+    }
+
+    .preview-hero h3:hover {
+      color: #007aff;
+    }
+
+    .preview-hero p {
+      font-size: 13px;
+      color: #6e6e73;
+      margin-bottom: 10px;
+    }
+
+    .preview-list {
+      margin-top: 16px;
+      border-top: 1px solid #f0f0f0;
+      padding-top: 12px;
+    }
+
+    .preview-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px solid #f5f5f5;
+    }
+
+    .preview-item:last-child {
+      border-bottom: none;
+    }
+
+    .preview-title {
+      font-size: 13px;
+      color: #1d1d1f;
+      flex: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      margin-right: 12px;
+    }
+
+    .preview-source {
+      font-size: 12px;
+      color: #86868b;
+      white-space: nowrap;
+    }
+
     /* 页脚 */
     .footer {
       text-align: center;
@@ -377,6 +562,17 @@
       margin-bottom: 16px;
     }
 
+    /* 响应式 */
+    @media (max-width: 768px) {
+      .modules-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+
     @media (max-width: 600px) {
       .header h1 {
         font-size: 32px;
@@ -392,99 +588,92 @@
         font-size: 14px;
       }
     }
-  </style>
-</head>
+'''
 
-<body>
 
-  <div class="header">
-    <span class="header-badge">YouTube 精选</span>
-    <h1>每日 AI 视频</h1>
-    <p>2026年01月29日 · 精选内容</p>
-  </div>
-
-  <div class="container">
-    <iframe id="twitter-widget-4" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true"
-      class="" style="position: static; visibility: visible; width: 520px; height: 655px; display: block; flex-grow: 1;"
-      title="X Post"
-      src="https://platform.twitter.com/embed/Tweet.html?dnt=false&amp;embedId=twitter-widget-4&amp;features=eyJ0ZndfdGltZWxpbmVfbGlzdCI6eyJidWNrZXQiOltdLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X2ZvbGxvd2VyX2NvdW50X3N1bnNldCI6eyJidWNrZXQiOnRydWUsInZlcnNpb24iOm51bGx9LCJ0ZndfdHdlZXRfZWRpdF9iYWNrZW5kIjp7ImJ1Y2tldCI6Im9uIiwidmVyc2lvbiI6bnVsbH0sInRmd19yZWZzcmNfc2Vzc2lvbiI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9LCJ0ZndfZm9zbnJfc29mdF9pbnRlcnZlbnRpb25zX2VuYWJsZWQiOnsiYnVja2V0Ijoib24iLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X21peGVkX21lZGlhXzE1ODk3Ijp7ImJ1Y2tldCI6InRyZWF0bWVudCIsInZlcnNpb24iOm51bGx9LCJ0ZndfZXhwZXJpbWVudHNfY29va2llX2V4cGlyYXRpb24iOnsiYnVja2V0IjoxMjA5NjAwLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X3Nob3dfYmlyZHdhdGNoX3Bpdm90c19lbmFibGVkIjp7ImJ1Y2tldCI6Im9uIiwidmVyc2lvbiI6bnVsbH0sInRmd19kdXBsaWNhdGVfc2NyaWJlc190b19zZXR0aW5ncyI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9LCJ0ZndfdXNlX3Byb2ZpbGVfaW1hZ2Vfc2hhcGVfZW5hYmxlZCI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9LCJ0ZndfdmlkZW9faGxzX2R5bmFtaWNfbWFuaWZlc3RzXzE1MDgyIjp7ImJ1Y2tldCI6InRydWVfYml0cmF0ZSIsInZlcnNpb24iOm51bGx9LCJ0ZndfbGVnYWN5X3RpbWVsaW5lX3N1bnNldCI6eyJidWNrZXQiOnRydWUsInZlcnNpb24iOm51bGx9LCJ0ZndfdHdlZXRfZWRpdF9mcm9udGVuZCI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9fQ%3D%3D&amp;frame=false&amp;hideCard=false&amp;hideThread=false&amp;id=2014834616889475508&amp;lang=zh-cn&amp;origin=https%3A%2F%2Faibreakfast.beehiiv.com%2Fp%2Fopenai-launches-prism-for-scientists-and-altman-admits-he-went-full-yolo&amp;sessionId=fdfab97aaf68a00279cf31c79c013c24df8159c4&amp;theme=light&amp;widgetsVersion=2615f7e52b7e0%3A1702314776716&amp;width=1550px"
-      data-tweet-id="2014834616889475508"></iframe>
-    <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen="" class="absolute" frameborder="0" height="100%" src="https://youtube.com/embed/Qkqe-uRhQJE"
-      style="top: 0; left: 0;" width="100%"></iframe>
-      
-    <div class="section-title">今日精选</div>
-
-    <div class="hero-card">
-      <div class="hero-thumb">
-        <span class="hero-badge">精选推荐</span>
-        <img src="https://img.youtube.com/vi/pGyHNyOUaqg/maxresdefault.jpg" alt="">
-        <span class="duration">N/A</span>
-      </div>
-
-      <div class="hero-body">
-        <div class="channel">Andrej Karpathy</div>
-        <h2>十分钟无代码构建并发布移动应用</h2>
-        <p class="summary">
-          视频演示了如何利用无代码平台，在十分钟内从构思到发布一款功能完整的移动应用。整个过程无需编程知识，重点展示了快速原型设计、界面拖拽搭建、逻辑流程配置以及一键发布到应用商店的完整流程，体现了现代开发工具的强大效率。</p>
-        <div class="tags"></div>
-      </div>
-
-      <button class="expand-btn" onclick="toggleExpand(this)">
-        <span>查看详情</span>
-        <span class="arrow">▼</span>
-      </button>
-
-      <div class="expand-content">
-        <div class="expand-inner">
-          <div class="insight-box">
-            <div class="insight-label">核心观点</div>
-            <div class="insight-text">无代码工具极大地降低了应用开发门槛，使创意能以前所未有的速度转化为可发布的产品。</div>
-            <ul class="key-points">
-              <li>无代码平台实现快速应用开发</li>
-              <li>从设计到发布的完整流程演示</li>
-              <li>强调原型验证和快速上市的重要性</li>
-            </ul>
-          </div>
-
-          <a href="https://www.youtube.com/watch?v=pGyHNyOUaqg" target="_blank" class="watch-btn">
-            观看原视频
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <div class="section-title">更多视频</div>
-
-    <a href="https://www.youtube.com/watch?v=opghSX24clM" target="_blank" class="video-card">
-      <div class="card-thumb">
-        <img src="https://img.youtube.com/vi/opghSX24clM/mqdefault.jpg" alt="">
-        <span class="duration">N/A</span>
-      </div>
-      <div class="card-info">
-        <h3>这让我大脑宕机——这些人类并非真实存在</h3>
-        <div class="meta">
-          <span>Two Minute Papers</span>
-          <span class="dot">·</span>
-          <span>4小时前</span>
-        </div>
-        <div class="tags"></div>
-      </div>
-    </a>
-
-  </div>
-
-  <div class="footer">
-    <p>Daily AI Report · 每日自动更新</p>
-  </div>
-
-  <script>
+def get_base_script() -> str:
+    """获取基础 JavaScript"""
+    return '''
     function toggleExpand(btn) {
       btn.classList.toggle('active');
       btn.nextElementSibling.classList.toggle('active');
     }
+'''
+
+
+def render_navbar(active_page: str = "index") -> str:
+    """渲染导航栏"""
+    pages = [
+        ("index", "首页", "index.html"),
+        ("youtube", "YouTube", "youtube.html"),
+        ("substack", "Substack", "substack.html"),
+        ("twitter", "Twitter", "twitter.html"),
+        ("products", "产品", "products.html"),
+        ("business", "商业", "business.html"),
+    ]
+
+    links = []
+    for page_id, name, url in pages:
+        active_class = " active" if page_id == active_page else ""
+        links.append(f'<a href="{url}" class="nav-link{active_class}">{name}</a>')
+
+    return f'''
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand">Daily AI Report</a>
+      <div class="nav-links">
+        {"".join(links)}
+      </div>
+    </div>
+  </nav>'''
+
+
+def render_header(title: str, subtitle: str, badge: str = "") -> str:
+    """渲染页面头部"""
+    today = datetime.now().strftime("%Y年%m月%d日")
+    badge_html = f'<span class="header-badge">{badge}</span>' if badge else ""
+
+    return f'''
+  <div class="header">
+    {badge_html}
+    <h1>{title}</h1>
+    <p>{today} · {subtitle}</p>
+  </div>'''
+
+
+def render_footer() -> str:
+    """渲染页脚"""
+    return '''
+  <div class="footer">
+    <p>Daily AI Report · 每日自动更新</p>
+  </div>'''
+
+
+def wrap_html(content: str, title: str = "Daily AI Report",
+              active_page: str = "index", extra_styles: str = "") -> str:
+    """包装完整 HTML 页面"""
+    return f'''<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{title}</title>
+  <style>
+    {get_base_styles()}
+    {extra_styles}
+  </style>
+</head>
+<body>
+
+  {render_navbar(active_page)}
+
+  {content}
+
+  {render_footer()}
+
+  <script>
+    {get_base_script()}
   </script>
 
 </body>
-
-</html>
+</html>'''
